@@ -2,13 +2,14 @@
 
 DOCKER_IMAGE=ghcr.io/octarect/aws-cdk:debian-bookworm-slim
 
-[[ "$@" =~ help ]] && DOCKER_OPT_IT="-it"
+[[ "$@" =~ help|configure ]] && DOCKER_OPT_IT="-it"
 
+mkdir -p $HOME/.aws
 docker container run --rm ${DOCKER_OPT_IT} \
     -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
     -e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
     -e AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN \
-    -v $HOME/.aws:/root/.aws:ro \
+    -v $HOME/.aws:/root/.aws \
     -v $(pwd):/app \
     $DOCKER_IMAGE \
     aws $@
