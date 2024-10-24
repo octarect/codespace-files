@@ -1,6 +1,5 @@
 #!/bin/bash
 
-echo export PATH=\"$(pwd)/bin:\$PATH\" >> $HOME/.bashrc
 
 cat <<"EOF" >> $HOME/.bashrc
 function aws-assumerole() {
