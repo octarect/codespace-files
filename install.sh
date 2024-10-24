@@ -16,4 +16,11 @@ function aws-assumerole() {
     export AWS_SECRET_ACCESS_KEY="$(echo "$secrets" | jq -r '.[1]')"
     export AWS_SESSION_TOKEN="$(echo "$secrets" | jq -r '.[2]')"
 }
+
+function ghsudo() {
+    if [[ -z "$SECRET_GITHUB_TOKEN" ]]; then
+        echo "Failed to enter sudo mode for GitHub. You have to set SECRET_GITHUB_TOKEN."
+    fi
+    export GITHUB_TOKEN="$SECRET_GITHUB_TOKEN"
+}
 EOF
