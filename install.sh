@@ -6,6 +6,9 @@ unzip awscliv2.zip
 mkdir -p ~/.local/bin
 ./aws/install --install-dir ~/.local/bin/aws-cli --bin-dir ~/.local/bin --update
 
+# AWS CodeCommit
+pip install git-remote-codecommit
+
 cat <<"EOF" >> $HOME/.bashrc
 function aws-assumerole() {
     [[ -z "$AWS_IAM_ROLE_ARN" ]] && echo "Please set AWS_IAM_ROLE_ARN" && return
